@@ -1,59 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏨 Hotel Chain Management System (Laravel 12)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-## About Laravel
+> **Hệ thống Quản lý Chuỗi Khách sạn** được xây dựng bằng Laravel 12, cung cấp giải pháp toàn diện từ đặt phòng (Booking) phía khách hàng đến quản trị (Admin Dashboard), phân quyền quản lý chi nhánh và báo cáo doanh thu.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Trang chủ Khách hàng | Chi tiết phòng & Đặt chỗ |
+|:---:|:---:|
+| ![Home Page](https://via.placeholder.com/600x300?text=Home+Page+Screenshot) | ![Booking Page](https://via.placeholder.com/600x300?text=Booking+Screenshot) |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Admin Dashboard | Hóa đơn PDF |
+|:---:|:---:|
+| ![Admin Dashboard](https://via.placeholder.com/600x300?text=Admin+Dashboard) | ![Invoice](https://via.placeholder.com/600x300?text=Invoice+PDF) |
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🌟 Tính năng Chính (Key Features)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Phân hệ Khách hàng (Client Side)
+- **Tìm kiếm thông minh:** Lọc phòng theo địa điểm, khoảng giá và **kiểm tra lịch trống** (tránh trùng lịch).
+- **Đặt phòng (Booking):**
+  - Tính tiền tự động theo số đêm.
+  - Áp dụng **Mã giảm giá (Voucher/Coupon)** trực tiếp.
+  - Kiểm tra tình trạng phòng thực tế (Real-time availability).
+- **Tài khoản cá nhân:** Đăng ký, Đăng nhập, Xem lịch sử đặt phòng, Tự hủy đơn (khi chưa duyệt).
 
-## Laravel Sponsors
+### 2. Phân hệ Quản trị (Admin Panel)
+- **Phân quyền đa cấp (Multi-tenancy):**
+  - **Super Admin:** Quản lý toàn bộ chuỗi, tạo khách sạn mới, gán quản lý.
+  - **Branch Manager:** Chỉ thấy và quản lý dữ liệu (đơn hàng, phòng, doanh thu) của chi nhánh mình.
+- **Quản lý Khách sạn & Phòng:**
+  - Quản lý các chi nhánh khách sạn.
+  - Quản lý Hạng phòng (Room Types) và Phòng vật lý (Physical Rooms).
+  - **Sơ đồ phòng (Room Grid):** Xem trạng thái Trống/Có khách/Bảo trì bằng màu sắc trực quan.
+- **Xử lý Đơn hàng (Workflow):**
+  - Quy trình: Chờ duyệt -> Duyệt (Tự động gán phòng) -> Checkout (Trả phòng về trống).
+  - **Xuất Hóa đơn (Invoicing):** Tạo hóa đơn chuẩn A4, in hoặc lưu PDF.
+- **CRM & Marketing:**
+  - Quản lý danh sách khách hàng, xem lịch sử chi tiêu.
+  - Tạo mã khuyến mãi (Giảm theo % hoặc tiền mặt, set hạn sử dụng).
+- **Báo cáo (Reports):**
+  - Dashboard thống kê tổng quan.
+  - **Biểu đồ doanh thu** theo tháng (sử dụng Chart.js).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠️ Công nghệ sử dụng (Tech Stack)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Backend:** PHP 8.2+, Laravel 12 Framework.
+- **Frontend:** Blade Templates, TailwindCSS (CDN), Vanilla JS.
+- **Database:** MySQL.
+- **Khác:** Chart.js (Biểu đồ), Carbon (Xử lý thời gian).
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Hướng dẫn Cài đặt (Installation)
 
-## Code of Conduct
+Để chạy dự án này trên máy local, hãy làm theo các bước sau:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Clone dự án
+```bash
+git clone [https://github.com/USERNAME/REPO_NAME.git](https://github.com/USERNAME/REPO_NAME.git)
+cd hotel-chain
 
-## Security Vulnerabilities
+### 2. Cài đặt các gói phụ thuộc
+Bash
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+composer install
+### 3. Cấu hình môi trường
+Copy file .env.example thành .env và cấu hình thông số Database:
 
-## License
+Bash
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+cp .env.example .env
+Mở file .env và chỉnh sửa:
+
+Code snippet
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hotel-chain
+DB_USERNAME=root          
+DB_PASSWORD=                
+### 4. Tạo Key và Database
+Bash
+
+php artisan key:generate
+php artisan migrate
+(Tùy chọn: Nếu có seeders) php artisan db:seed
